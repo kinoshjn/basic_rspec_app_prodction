@@ -6,3 +6,5 @@ RSpecの[GitHubのREADME](https://github.com/rspec/rspec-rails)を見て、RUNTE
 
 この課題はforkしてご自身のリポジトリを作成して作業してください。  
 また、PRのマージをfork元のブランチに対して行わないようにご注意ください。  
+
+※このアプリはDockerを使用しているため、コマンドはDockerを使用したもので進めてください。
