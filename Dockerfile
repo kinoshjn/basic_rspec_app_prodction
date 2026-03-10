@@ -1,11 +1,16 @@
 FROM ruby:3.1.4
 ENV LANG C.UTF-8
 ENV TZ Asia/Tokyo
-RUN curl -sL https://deb.nodesource.com/setup_19.x | bash - \
-  && wget --quiet -O - /tmp/pubkey.gpg https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+
+# Node.js 22.x (LTS) のインストール
+RUN apt-get update -qq \
+  && apt-get install -y ca-certificates curl gnupg \
+  && mkdir -p /etc/apt/keyrings \
+  && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+  && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_22.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
   && apt-get update -qq \
-  && apt-get install -y build-essential libpq-dev nodejs yarn
+  && apt-get install -y build-essential libpq-dev nodejs \
+  && npm install -g yarn@1.22.22
 RUN mkdir /sample_app_for_rspec
 WORKDIR /sample_app_for_rspec
 RUN gem install bundler:2.3.17
