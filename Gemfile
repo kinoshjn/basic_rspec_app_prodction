@@ -20,6 +20,13 @@ group :development, :test do
   gem 'factory_bot_rails'
 end
 
+group :test do
+  # 2026.3/13 by kino software test chapture8
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem "webdrivers"
+end
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
