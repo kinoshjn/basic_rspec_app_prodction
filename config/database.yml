@@ -20,6 +20,13 @@ test:
   <<: *default
   database: db/sample_app_for_rspec_test.sqlite3
 
+# production:
+#   <<: *default
+#   database: db/sample_app_for_rspec_production.sqlite3
+
+# 2026.3/20 by kino
 production:
-  <<: *default
-  database: db/sample_app_for_rspec_production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV['DATABASE_URL'] %>

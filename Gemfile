@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.4'
 
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
-gem 'sqlite3'
+
 gem 'puma'
 gem 'sass-rails'
 gem 'uglifier'
@@ -18,6 +18,13 @@ group :development, :test do
   # 2026.3/10 by kino
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  # 2026.3/20 by kino
+  gem 'sqlite3'
+end
+
+# 2026.3/29 by kino
+group :production  do
+  gem 'pg'
 end
 
 group :test do
